@@ -1,0 +1,45 @@
+﻿@model SelfControlDiary.Models.SleepDiary
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удаление записи</h1>
+
+<h3>Вы действительно хотите удалить эту запись?</h3>
+<div>
+    <h4>SleepDiary</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lay)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lay)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Up)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Up)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HourSleep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HourSleep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Вернуться назад</a>
+    </form>
+</div>

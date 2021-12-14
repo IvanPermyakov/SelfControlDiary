@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SelfControlDiary.Models.FoodDiary>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Дневник питания</h1>
+
+<p>
+    <a asp-action="Create">Добавить новую запись</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Дата</th>
+            <th scope="col">Еда</th>
+            <th scope="col">Граммы</th>
+            <th scope="col">Каллории</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Foods.FoodName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Grams)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Kalls)
+    </td>
+    <td>
+        @Html.ActionLink("Изменить", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+    </td>
+</tr>
+    }
+</table>

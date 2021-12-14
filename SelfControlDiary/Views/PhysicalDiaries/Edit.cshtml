@@ -1,0 +1,44 @@
+﻿@model SelfControlDiary.Models.PhysicalDiary
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Изменить запись</h1>
+
+<h4>Дневник тренировок</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Дата</label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Упражнение</label>
+                <select asp-for="PhysicalsId" class="form-control" asp-items="ViewBag.physicals"></select>
+                <span asp-validation-for="PhysicalsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Время тренировки(мин)</label>
+                <input asp-for="Min" class="form-control" />
+                <span asp-validation-for="Min" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,55 @@
+﻿@model SelfControlDiary.Models.People
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Уровень активности</h2>
+<p>
+    Разделяют пять типов физической активности: минимальный (никаких физических нагрузок), низкий (физические нагрузки 1-3 раза в неделю),<br />
+    средний (3-5 дней в неделю), высокий (6-7 раз в неделю), очень высокий (тренировки чаще, чем раз в день).<br />
+    Для определения полной потребности организма в энергии и калориях нужно умножить BMR, соответствующий вашему полу,<br />
+    возрасту и весу, на коэффициент, определяемый в зависимости от вашего уровня физической активности в рамках недели:<br />
+</p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Пол</label>
+                <select asp-for="SexId" class="form-control" asp-items="ViewBag.peoples"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Возраст</label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Вес</label>
+                <input asp-for="weight" class="form-control" />
+                <span asp-validation-for="weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Рост</label>
+                <input asp-for="height" class="form-control" />
+                <span asp-validation-for="height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Активность</label>
+                <select asp-for="ActivId" class="form-control" asp-items="ViewBag.peoples2"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

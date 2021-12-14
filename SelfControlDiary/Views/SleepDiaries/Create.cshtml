@@ -1,0 +1,43 @@
+﻿@model SelfControlDiary.Models.SleepDiary
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Добавление записи</h1>
+
+<h4>Дневник сна</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Время начала сна</label>
+                <input asp-for="Lay" class="form-control" />
+                <span asp-validation-for="Lay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Время пробуждения</label>
+                <input asp-for="Up" class="form-control" />
+                <span asp-validation-for="Up" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Оценка сна</label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

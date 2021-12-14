@@ -1,0 +1,44 @@
+﻿@model SelfControlDiary.Models.FoodDiary
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Добавление записи</h1>
+<a asp-controller="Foods" asp-action="Create">Добавить еду</a>
+<h4>Дневник питания</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Дата</label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Еда</label>
+                @Html.DropDownListFor(model => model.FoodsId, ViewBag.Foods as SelectList, new { @class = "form-control" })
+                <span asp-validation-for="Foods" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Граммы</label>
+                <input asp-for="Grams" class="form-control" />
+                <span asp-validation-for="Grams" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="FoodDiaries" asp-action="Create">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

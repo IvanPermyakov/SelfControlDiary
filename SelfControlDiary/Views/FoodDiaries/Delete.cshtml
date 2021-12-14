@@ -1,0 +1,39 @@
+﻿@model SelfControlDiary.Models.FoodDiary
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Удаление записи</h1>
+
+<h3>Вы действительно хотите удалить эту запись?</h3>
+<div>
+    <h4>Дневник питания</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Foods.FoodName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Foods.FoodName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Grams)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Grams)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Вернуться назад</a>
+    </form>
+</div>
